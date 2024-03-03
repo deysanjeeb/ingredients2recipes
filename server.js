@@ -14,9 +14,14 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`)
-});
+function startServer() {
+  return new Promise((resolve) => {
+      app.listen(port, () => {
+          console.log(`Server is running on http://localhost:${port}`);
+          resolve();
+      });
+  });
+}
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -69,9 +74,14 @@ async function runChat(query) {
   console.log(response.text());
 }
 
-rl.question('Please enter your query: ', (q) => {
-  let query = q;
-    console.log(`You entered: ${query}`);
-    runChat(query);
-    rl.close();
-});
+async function run() {
+  await startServer();
+  rl.question('Please enter your query: ', (q) => {
+    let query = q;
+      console.log(`You entered: ${query}`);
+      runChat(query);
+      rl.close();
+  });
+  }
+
+run();
