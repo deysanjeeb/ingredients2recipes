@@ -76,11 +76,11 @@ async function runChat(query) {
 
 async function run() {
   await startServer();
-  rl.question('Please enter your query: ', (q) => {
-    let query = q;
-      console.log(`You entered: ${query}`);
-      runChat(query);
-      rl.close();
+  rl.question('Please enter your ingredients: ', (q) => {
+    let query = "Please suggest some recipes using the following ingredients: "+q;
+    console.log(`You entered: ${query}`);
+    runChat(query);
+    rl.close();
   });
   }
 
