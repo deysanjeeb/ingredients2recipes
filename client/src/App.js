@@ -10,9 +10,11 @@ function App() {
   };
 
   return (
+    <header className="App-header">
+    
     <div className='centered'>
       <input type="text" value={inputValue} onChange={handleInputChange} />
-    </div>
+    </div></header>
   );
 }
 
