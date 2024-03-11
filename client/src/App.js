@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
+import { signInWithGooglePopup } from "./utils/firebase.utils.js"
+
 
 function App() {
   const [inputValue, setInputValue] = useState('');
@@ -9,6 +11,12 @@ function App() {
     setInputValue(event.target.value);
   };
 
+
+  const logGoogleUser = async () => {
+          const response = await signInWithGooglePopup();
+          console.log(response);
+      };
+    
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(inputValue);
@@ -16,7 +24,10 @@ function App() {
 
   return (
     <header className="App-header">
-    
+    <div>
+                <button onClick={logGoogleUser}>Sign In With Google</button>
+    </div>
+
     <div className='centered'>
       <form onSubmit={handleSubmit}>
         <input type="text" value={inputValue} onChange={handleInputChange} />
@@ -27,5 +38,5 @@ function App() {
    </header>
   );
 }
-
+// export default SignIn;
 export default App;
