@@ -22,13 +22,10 @@ app.use(express.json());
 
 app.post('/api/recipe', async (req, res) => {
   const data =req.body; // Access the JSON data sent
-  // response = JSON.parse(req.body);
   console.log(data.ingr);
   let query = "Please suggest some recipes using the following ingredients: " + data.ingr;
   const response = await runChat(query);
   console.log( response);
-  const hello = response;
-  console.log(hello);
   res.send(response);
 });
 
@@ -91,12 +88,8 @@ async function runChat(query) {
   const result = await chat.sendMessage(query);
   const response = result.response;
   console.log(response.text());
-  // const recipes = {"recipes" : response.text.toString()};
-  // return result.response.text;
   return new Promise((resolve) => {
     setTimeout(() => {
-      // const result = chat.sendMessage(query);
-      // const response = result.response;
       rec= response.text();
       console.log((rec));
       resolve(rec);
