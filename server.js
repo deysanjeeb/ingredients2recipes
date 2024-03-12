@@ -24,8 +24,8 @@ app.post('/api/recipe', async (req, res) => {
   const data =req.body; // Access the JSON data sent
   // response = JSON.parse(req.body);
   console.log(data.ingr);
-  
-  const response = await runChat(data.ingr);
+  let query = "Please suggest some recipes using the following ingredients: " + data.ingr;
+  const response = await runChat(query);
   console.log( response);
   const hello = response;
   console.log(hello);
