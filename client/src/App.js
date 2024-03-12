@@ -7,8 +7,10 @@ import axios from 'axios';
 
 function App() {
 
-  // The URL to send the POST request to
   const [inputValue, setInputValue] = useState('');
+  // The URL to send the POST request to
+  const url = 'http://localhost:5000/api/recipe';
+
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -23,14 +25,19 @@ function App() {
     
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // data recieved from the input field
     console.log(inputValue);
-    const url = 'http://localhost:5000/api/recipe';
+
     // The data to send in the POST request
     const data = {
       ingr: inputValue
     };
+
+    // sending POST request
     try {
       const response = await axios.post(url, data);
+
       console.log(response.data);
     } catch (error) {
       console.error(error);
