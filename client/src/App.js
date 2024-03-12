@@ -1,14 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
 import { signInWithGooglePopup } from "./utils/firebase.utils.js"
 
+import axios from 'axios';
+
 
 function App() {
+
+  // The URL to send the POST request to
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
+    
   };
 
 
@@ -17,9 +21,21 @@ function App() {
           console.log(response);
       };
     
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(inputValue);
+    const url = 'http://localhost:5000/api/recipe';
+    // The data to send in the POST request
+    const data = {
+      ingr: inputValue
+    };
+    try {
+      const response = await axios.post(url, data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+    
   }
 
   return (

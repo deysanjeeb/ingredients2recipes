@@ -1,6 +1,11 @@
 const express = require('express');
+const cors = require('cors');
+
 const app = express();
 const port = 5000;
+// const bodyParser = require('body-parser');
+app.use(cors());
+
 
 require('dotenv').config();
 const readline = require('readline');
@@ -13,11 +18,25 @@ const {
 app.get('/', (req, res) => {
   res.send('Hello World!')
 });
+app.use(express.json());
+
+app.post('/api/recipe', async (req, res) => {
+  const data =req.body; // Access the JSON data sent
+  // response = JSON.parse(req.body);
+  console.log(data.ingr);
+  
+  const response = await runChat(data.ingr);
+  console.log( response);
+  const hello = response;
+  console.log(hello);
+  res.send(response);
+});
 
 function startServer() {
   return new Promise((resolve) => {
       app.listen(port, () => {
           console.log(`Server is running on http://localhost:${port}`);
+
           resolve();
       });
   });
@@ -72,6 +91,17 @@ async function runChat(query) {
   const result = await chat.sendMessage(query);
   const response = result.response;
   console.log(response.text());
+  // const recipes = {"recipes" : response.text.toString()};
+  // return result.response.text;
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      // const result = chat.sendMessage(query);
+      // const response = result.response;
+      rec= response.text();
+      console.log((rec));
+      resolve(rec);
+    }, 3000);
+  });
 }
 
 async function run() {
