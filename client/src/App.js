@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import { signInWithGooglePopup } from "./utils/firebase.utils.js"
+import ReactMarkdown from 'react-markdown';
 
 import axios from 'axios';
 
@@ -10,7 +11,7 @@ function App() {
   const [inputValue, setInputValue] = useState('');
   // The URL to send the POST request to
   const url = 'http://localhost:5000/api/recipe';
-
+  const [response, setResponse] = useState(null);
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -39,6 +40,7 @@ function App() {
       const response = await axios.post(url, data);
 
       console.log(response.data);
+      setResponse(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -50,7 +52,9 @@ function App() {
     <div>
                 <button onClick={logGoogleUser}>Sign In With Google</button>
     </div>
-
+    <div style={{ fontSize: '20px'}}>
+            {response && <div><ReactMarkdown>{response}</ReactMarkdown></div>}
+        </div>
     <div className='centered'>
       <form onSubmit={handleSubmit}>
         <input type="text" value={inputValue} onChange={handleInputChange} />
