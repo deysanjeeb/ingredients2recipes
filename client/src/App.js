@@ -4,6 +4,8 @@ import { signInWithGooglePopup } from "./utils/firebase.utils.js"
 import ReactMarkdown from 'react-markdown';
 
 import axios from 'axios';
+import HomePage from './components/home/index.js';
+
 
 
 function App() {
@@ -47,23 +49,19 @@ function App() {
     
   }
 
-  return (
-    <header className="App-header">
-    <div>
-                <button onClick={logGoogleUser}>Sign In With Google</button>
+    return (
+      <div>
+      <HomePage 
+        logGoogleUser={logGoogleUser}
+        response={response}
+        inputValue={inputValue}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
+      />
+
+      {/* Other components */}
     </div>
-    <div style={{ fontSize: '20px'}}>
-            {response && <div><ReactMarkdown>{response}</ReactMarkdown></div>}
-        </div>
-    <div className='centered'>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={inputValue} onChange={handleInputChange} />
-        <button type="submit">Submit</button>
-      </form>
-    </div> 
-   
-   </header>
-  );
-}
-// export default SignIn;
-export default App;
+    );
+  }
+  // export default SignIn;
+  export default App;
