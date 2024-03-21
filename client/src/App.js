@@ -21,42 +21,40 @@ function App() {
   };
 
 
-  const logGoogleUser = async () => {
-          const response = await signInWithGooglePopup();
-          console.log(response);
-      };
+  // const logGoogleUser = async () => {
+  //         const response = await signInWithGooglePopup();
+  //         console.log(response);
+  //     };
     
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
 
-    // data recieved from the input field
-    console.log(inputValue);
+  //   // data recieved from the input field
+  //   console.log(inputValue);
 
-    // The data to send in the POST request
-    const data = {
-      ingr: inputValue
-    };
+  //   // The data to send in the POST request
+  //   const data = {
+  //     ingr: inputValue
+  //   };
 
-    // sending POST request
-    try {
-      const response = await axios.post(url, data);
+  //   // sending POST request
+  //   try {
+  //     const response = await axios.post(url, data);
 
-      console.log(response.data);
-      setResponse(response.data);
-    } catch (error) {
-      console.error(error);
-    }
+  //     console.log(response.data);
+  //     setResponse(response.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
     
-  }
+  // }
 
     return (
       <div>
       <HomePage 
-        logGoogleUser={logGoogleUser}
         response={response}
         inputValue={inputValue}
-        handleInputChange={handleInputChange}
-        handleSubmit={handleSubmit}
+        
       />
 
       {/* Other components */}
