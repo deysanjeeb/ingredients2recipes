@@ -7,6 +7,26 @@ const port = 5000;
 app.use(cors());
 
 
+const MongoClient = require('mongodb').MongoClient;
+
+require('dotenv').config();
+
+// const uri = process.env.MONGODB_URI;
+const uri = 'mongodb://127.0.0.1:27017'
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+client.connect(err => {
+  if (err) {
+    console.error('Error connecting to MongoDB', err);
+    return;
+  }
+  
+  const collection = client.db("ingr2recipes").collection("users");
+  // perform actions on the collection object
+  client.close();
+});
+
+
 require('dotenv').config();
 const readline = require('readline');
 const {
