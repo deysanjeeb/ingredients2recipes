@@ -1,20 +1,56 @@
 import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import axios from 'axios';
+import { signInWithGooglePopup } from "../../utils/firebase.utils.js"
 
 
-function HomePage({ logGoogleUser, response, handleSubmit }) {
+
+function HomePage({ }) {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
+  // The URL to send the POST request to
+  const url = 'http://localhost:5000/api/recipe';
+  const [response, setResponse] = useState(null);
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+    
   };
 
-  const handleSendMessage = () => {
-    if (inputValue.trim() !== '') {
-      setMessages([...messages, { text: inputValue, sender: 'user' }]);
-      setInputValue('');
+
+  const logGoogleUser = async () => {
+          const response = await signInWithGooglePopup();
+          console.log(response);
+      };
+
+  // const handleSendMessage = () => {
+  //   if (inputValue.trim() !== '') {
+  //     setMessages([...messages, { text: inputValue, sender: 'user' }]);
+  //     setInputValue('');
+  //   }
+   
+  // };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // data recieved from the input field
+    console.log(inputValue);
+
+    // The data to send in the POST request
+    const data = {
+      ingr: inputValue
+    };
+
+    // sending POST request
+    try {
+      const response = await axios.post(url, data);
+
+      console.log(response.data);
+      setResponse(response.data);
+    } catch (error) {
+      console.error(error);
     }
+    
   };
 
   return (
