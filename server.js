@@ -27,7 +27,6 @@ client.connect(err => {
 });
 
 
-require('dotenv').config();
 const readline = require('readline');
 const {
   GoogleGenerativeAI,

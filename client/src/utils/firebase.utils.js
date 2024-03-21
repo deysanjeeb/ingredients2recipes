@@ -1,15 +1,17 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-const config = require('./secrets.json');
+// const config = require('./secrets.json');
+require('dotenv').config();
+const apiKey = process.env.API_KEY;
 
 const firebaseConfig = {
-  apiKey: config.apiKey,
-  authDomain: config.authDomain,
-  projectId: config.projectId,
-  storageBucket: config.storageBucket,
-  messagingSenderId: config.messagingSenderId,
-  appId: config.appId
+  apiKey: process.env.apiKey,
+  authDomain: process.env.authDomain,
+  projectId: process.env.projectId,
+  storageBucket: process.env.storageBucket,
+  messagingSenderId: process.env.messagingSenderId,
+  appId: process.env.appId
 };
 
 // Initialize Firebase
