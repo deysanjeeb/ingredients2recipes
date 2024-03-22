@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-const port = 5000;
+const port = 8000;
 // const bodyParser = require('body-parser');
 app.use(cors());
 
@@ -13,18 +13,18 @@ require('dotenv').config();
 // 
 // const uri = process.env.MONGODB_URI;
 const uri = 'mongodb://127.0.0.1:27017'
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-client.connect(err => {
-  if (err) {
-    console.error('Error connecting to MongoDB', err);
-    return;
-  }
+// client.connect(err => {
+//   if (err) {
+//     console.error('Error connecting to MongoDB', err);
+//     return;
+//   }
   
-  const collection = client.db("ingr2recipes").collection("users");
-  // perform actions on the collection object
-  client.close();
-});
+//   const collection = client.db("ingr2recipes").collection("users");
+//   // perform actions on the collection object
+//   client.close();
+// });
 
 
 const readline = require('readline');

@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 // const config = require('./secrets.json');
-console.log(process.env.REACT_APP_FIREBASE_API_KEY)
+// console.log(process.env.REACT_APP_FIREBASE_API_KEY)
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
