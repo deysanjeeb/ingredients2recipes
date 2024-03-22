@@ -12,7 +12,7 @@ function App() {
 
   const [inputValue, setInputValue] = useState('');
   // The URL to send the POST request to
-  const url = 'http://localhost:5000/api/recipe';
+  const url = 'https://ingredients2recipes-5tvk-6umhuvfsr-deysanjeebs-projects.vercel.app:3000/api/recipe';
   const [response, setResponse] = useState(null);
 
   const handleInputChange = (event) => {
