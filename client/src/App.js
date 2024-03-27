@@ -12,7 +12,7 @@ function App() {
 
   const [inputValue, setInputValue] = useState('');
   // The URL to send the POST request to
-  const url = 'http://localhost:5000/api/recipe';
+  const url = 'https://ingredients2recipes-5tvk.vercel.app/api/recipe';
   const [response, setResponse] = useState(null);
 
   const handleInputChange = (event) => {
@@ -20,33 +20,36 @@ function App() {
     
   };
 
+
 /*
   const logGoogleUser = async () => {
           const response = await signInWithGooglePopup();
           console.log(response);
       };
+
     
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
 
-    // data recieved from the input field
-    console.log(inputValue);
+  //   // data recieved from the input field
+  //   console.log(inputValue);
 
-    // The data to send in the POST request
-    const data = {
-      ingr: inputValue
-    };
+  //   // The data to send in the POST request
+  //   const data = {
+  //     ingr: inputValue
+  //   };
 
-    // sending POST request
-    try {
-      const response = await axios.post(url, data);
+  //   // sending POST request
+  //   try {
+  //     const response = await axios.post(url, data);
 
-      console.log(response.data);
-      setResponse(response.data);
-    } catch (error) {
-      console.error(error);
-    }
+  //     console.log(response.data);
+  //     setResponse(response.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
     
+
   }
 */
     return (
@@ -62,6 +65,7 @@ function App() {
           />}/>
         </Routes>
       </Router>
+
       {/* Other components */}
     </div>
     );

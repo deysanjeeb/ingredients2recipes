@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import axios from 'axios';
 import { signInWithGooglePopup } from "../../utils/firebase.utils.js"
+
 import './home.css';
 import { NavLink } from 'react-router-dom';
+
 
 function Sidebar(){
   return(
@@ -19,12 +21,14 @@ function Sidebar(){
   )
 }
 
+
 function HomePage({ }) {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
   // The URL to send the POST request to
   const url = 'https://ingredients2recipes-5tvk.vercel.app/api/recipe';
   const [response, setResponse] = useState(null);
+
   
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -40,7 +44,9 @@ function HomePage({ }) {
     if (inputValue.trim() !== '') {
       setMessages([...messages, { text: inputValue, sender: 'user' }]);
       setInputValue('');
+
     }
+    
   };
 */
 
