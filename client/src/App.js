@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 import { signInWithGooglePopup } from "./utils/firebase.utils.js"
 import ReactMarkdown from 'react-markdown';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import HomePage from './components/home/index.js';
 
@@ -20,7 +20,7 @@ function App() {
     
   };
 
-
+/*
   const logGoogleUser = async () => {
           const response = await signInWithGooglePopup();
           console.log(response);
@@ -48,17 +48,20 @@ function App() {
     }
     
   }
-
+*/
     return (
       <div>
-      <HomePage 
-        logGoogleUser={logGoogleUser}
-        response={response}
-        inputValue={inputValue}
-        handleInputChange={handleInputChange}
-        handleSubmit={handleSubmit}
-      />
-
+   
+      
+      <Router>
+        <Routes>
+          <Route path="/" element={ <HomePage 
+            response={response}
+            inputValue={inputValue}
+            handleInputChange={handleInputChange}
+          />}/>
+        </Routes>
+      </Router>
       {/* Other components */}
     </div>
     );
