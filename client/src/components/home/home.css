@@ -1,6 +1,7 @@
-*{
+* {
+   
     box-sizing: border-box;
-}
+  }
 
 .sidebar {
     position: fixed; 
@@ -8,7 +9,7 @@
     top: 0; 
     height: 100%; 
     width: 200px; 
-    background-color: #f5f5f5; 
+    background-color: white; 
     padding: 20px; 
     overflow: auto;
   }
@@ -30,9 +31,9 @@
 */
 
 .homepageContainer{
-    margin-left: 240px;
-    padding: 20px;
-    width: calc(100% - 240px);
+    margin-left: 220px;
+    padding: 0px;
+    width: calc(100% - 220px);
 
 
 }
@@ -74,9 +75,19 @@ input{
     margin-top: 20px;
 
 }
-
+/*
 .main-content{
-    margin-left: 240px;
+    margin-left: 220px;
     flex: 3;
     padding: 20px;
+}
+*/
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-left: 50px;
 }
