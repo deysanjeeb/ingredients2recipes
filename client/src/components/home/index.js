@@ -6,12 +6,16 @@ import './home.css';
 import { NavLink } from 'react-router-dom';
 
 function Sidebar(){
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    window.location.href = '/';
+  };
   return(
     <div className="sidebar">
       <h3 className='sidebar-heading'>Menu</h3>
       <ul className='sidebar-list'>
-        <li> <NavLink to='/'>Home</NavLink></li>
-        <li>Recipes</li>
+        <li> <a href='/' onClick={handleHomeClick}>Home</a></li>
+        <li>History</li>
         <li>Ingredients</li>
         <li>Profile</li>
       </ul>
