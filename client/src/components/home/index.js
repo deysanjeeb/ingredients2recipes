@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import axios from 'axios';
 import { signInWithGooglePopup } from "../../utils/firebase.utils.js"
+import { PostHog } from 'posthog-node'
 
+const client = new PostHog(
+  process.env.postHogAPI,
+    { host: 'https://app.posthog.com' }
+)
 
 
 function HomePage({ }) {
@@ -11,6 +16,16 @@ function HomePage({ }) {
   // The URL to send the POST request to
   const url = 'https://ingredients2recipes-5tvk.vercel.app/api/recipe';
   const [response, setResponse] = useState(null);
+
+  client.capture({
+      distinctId: 'test-id',
+      event: 'test-event'
+  })
+
+  // Send queued events immediately. Use for example in a serverless environment
+  // where the program may terminate before everything is sent.
+  // Use `client.flush()` instead if you still need to send more events or fetch feature flags.
+  client.shutdown()
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
