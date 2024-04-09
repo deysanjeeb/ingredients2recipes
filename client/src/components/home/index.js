@@ -75,7 +75,7 @@ function HomePage({ }) {
       
       <header className="App-header">
         
-          <Sidebar/>
+          {/* <Sidebar/> */}
     
          
         <div className='main-content'>
