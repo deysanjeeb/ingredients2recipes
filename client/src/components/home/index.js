@@ -4,7 +4,13 @@ import axios from 'axios';
 import { signInWithGooglePopup } from "../../utils/firebase.utils.js"
 import './home.css';
 import { NavLink } from 'react-router-dom';
+import { PostHog } from 'posthog-node'
+const config = require('./secrets.json');
 
+const client = new PostHog(
+    config.posthogAPI,
+    { host: 'https://app.posthog.com' }
+)
 function Sidebar(){
   const handleHomeClick = (e) => {
     e.preventDefault();
