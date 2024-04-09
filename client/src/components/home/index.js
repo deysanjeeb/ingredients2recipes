@@ -4,11 +4,21 @@ import axios from 'axios';
 import { signInWithGooglePopup } from "../../utils/firebase.utils.js"
 import { PostHog } from 'posthog-node'
 
-const client = new PostHog(
-  process.env.postHogAPI,
-    { host: 'https://app.posthog.com' }
-)
 
+
+function Sidebar(){
+  return(
+    <div className="sidebar">
+      <h3 className='sidebar-heading'>Menu</h3>
+      <ul className='sidebar-list'>
+        <li> <NavLink to='/'>Home</NavLink></li>
+        <li>Recipes</li>
+        <li>Ingredients</li>
+        <li>Profile</li>
+      </ul>
+    </div>
+  )
+}
 
 function HomePage({ }) {
   const [messages, setMessages] = useState([]);
@@ -17,15 +27,7 @@ function HomePage({ }) {
   const url = 'https://ingredients2recipes-5tvk.vercel.app/api/recipe';
   const [response, setResponse] = useState(null);
 
-  client.capture({
-      distinctId: 'test-id',
-      event: 'test-event'
-  })
-
-  // Send queued events immediately. Use for example in a serverless environment
-  // where the program may terminate before everything is sent.
-  // Use `client.flush()` instead if you still need to send more events or fetch feature flags.
-  client.shutdown()
+  
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -75,7 +77,7 @@ function HomePage({ }) {
       
       <header className="App-header">
         
-          {/* <Sidebar/> */}
+          <Sidebar/>
     
          
         <div className='main-content'>
