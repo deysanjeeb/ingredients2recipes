@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import axios from 'axios';
 import { signInWithGooglePopup } from "../../utils/firebase.utils.js"
-import { PostHog } from 'posthog-node'
 
 
+import './home.css';
+import { NavLink } from 'react-router-dom';
 
 function Sidebar(){
   return(

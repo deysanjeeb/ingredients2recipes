@@ -5,6 +5,8 @@ import ReactMarkdown from 'react-markdown';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import HomePage from './components/home/index.js';
+import { PostHog } from 'posthog-node'
+
 
 const client = new PostHog(
   process.env.postHogAPI,
