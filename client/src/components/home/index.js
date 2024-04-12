@@ -4,6 +4,23 @@ import axios from 'axios';
 import { signInWithGooglePopup } from "../../utils/firebase.utils.js"
 
 
+import './home.css';
+import { NavLink } from 'react-router-dom';
+
+
+function Sidebar(){
+  return(
+    <div className="sidebar">
+      <h3 className='sidebar-heading'>Menu</h3>
+      <ul className='sidebar-list'>
+        <li> <NavLink to='/'>Home</NavLink></li>
+        <li>Recipes</li>
+        <li>Ingredients</li>
+        <li>Profile</li>
+      </ul>
+    </div>
+  )
+}
 
 function HomePage({ }) {
   const [messages, setMessages] = useState([]);
