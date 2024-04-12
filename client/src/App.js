@@ -6,16 +6,16 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import HomePage from './components/home/index.js';
 import { PostHog } from 'posthog-node'
-const config = require('./secrets.json');
+// const config = require('./secrets.json');
 
-// const client = new PostHog(
-//   process.env.postHogAPI,
-//     { host: 'https://app.posthog.com' }
-// )
 const client = new PostHog(
-  config.postHogAPI,
+  process.env.postHogAPI,
     { host: 'https://app.posthog.com' }
 )
+// const client = new PostHog(
+//   config.postHogAPI,
+//     { host: 'https://app.posthog.com' }
+// )
 
 function App() {
 
