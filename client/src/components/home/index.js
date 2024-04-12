@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import axios from 'axios';
 import { signInWithGooglePopup } from "../../utils/firebase.utils.js"
 
+
 import './home.css';
 import { NavLink } from 'react-router-dom';
 
@@ -21,7 +22,6 @@ function Sidebar(){
   )
 }
 
-
 function HomePage({ }) {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
@@ -29,7 +29,6 @@ function HomePage({ }) {
   const url = 'https://ingredients2recipes-5tvk.vercel.app/api/recipe';
   const [response, setResponse] = useState(null);
 
-  
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
