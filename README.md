@@ -1,7 +1,6 @@
 # ingredients2recipes
 
-This project includes a simple server setup using Node.js and Express.
-
+This is a fullstack app which provides the user with recipe ideas based on available ingredients.
 
 ## Server
 
